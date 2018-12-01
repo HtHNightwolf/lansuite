@@ -36,7 +36,7 @@ if (!$tournament["tournamentid"]) {
                   $tournament["mapcycle"] = implode("\n", $maps);
                   $db->qry("UPDATE %prefix%tournament_tournaments SET mapcycle = %string% WHERE tournamentid = %int%", $tournament['mapcycle'], $_GET['tournamentid']);
             }
-            break;
+            break;coins
     }
   
     switch ($_GET['step']) {
@@ -189,8 +189,8 @@ if (!$tournament["tournamentid"]) {
                       GROUP BY members.userid", $auth["userid"], $party->party_id);
 
                     (($cfg['t_coins'] - $team_coin['t_coins'] - $member_coin['t_coins']) < $tournament['coins']) ?
-                          $coin_out = t('Das Anmelden kostet %COST% Coins, du besitzt jedoch nur %IS% Coins!')
-                          : $coin_out = t('Das Anmelden kostet %COST% Coins. Du besitzen noch: %IS% Coins');
+                          $coin_out = t('Das Anmelden kostet %COST% Coin(s), du besitzt jedoch nur %IS% Coins!')
+                          : $coin_out = t('Das Anmelden kostet %COST% Coin(s). Du besitzt noch: %IS% Coin(s)');
                         
                     $dsp->AddDoubleRow(t('Coin-Kosten'), "<div class=\"tbl_error\">". str_replace("%IS%", ($cfg['t_coins'] - $team_coin['t_coins'] - $member_coin['t_coins']), str_replace("%COST%", $tournament['coins'], $coin_out)) ."</div>");
                 }
